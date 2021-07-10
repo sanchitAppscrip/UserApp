@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.response.UserDto" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@color/design_default_color_primary_dark"
+            app:navigationIcon="@drawable/ic_back"
+            app:navigationIconTint="@color/white"
+            app:title="@string/user_details"
+            app:titleTextColor="@color/white" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btSubmit"
+            android:layout_below="@id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/app_margin"
+                android:paddingEnd="@dimen/app_margin"
+                android:paddingBottom="20dp">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="@dimen/app_margin"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_oval="true"
+                    tools:src="@tools:sample/avatars" />
+
+
+                <TextView
+                    android:id="@+id/tvNameLabel"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivProfile" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvName"
+                    style="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{user.component5().component1()}"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/barrier"
+                    app:layout_constraintTop_toBottomOf="@id/ivProfile"
+                    app:lineHeight="@dimen/text_xhuge"
+                    tools:text="@tools:sample/full_names" />
+
+                <View
+                    android:id="@+id/divider1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/color_divider"
+                    app:layout_constraintTop_toBottomOf="@id/tvName" />
+
+                <TextView
+                    android:id="@+id/tvEmailLabel"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvEmail"
+                    style="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{user.component2()}"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/barrier"
+                    app:layout_constraintTop_toBottomOf="@id/divider1"
+                    app:lineHeight="@dimen/text_xhuge"
+                    tools:text="test@gmail.com" />
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/color_divider"
+                    app:layout_constraintTop_toBottomOf="@id/tvEmail" />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/barrier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:barrierDirection="end"
+                    app:constraint_referenced_ids="tvNameLabel,tvEmailLabel,tvMobileLabel,tvAgeLabel,tvNationalityLabel,tvLocationLabel,tvGenderLabel" />
+
+                <TextView
+                    android:id="@+id/tvMobileLabel"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mobile"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvMobile"
+                    style="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{user.component3()}"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/barrier"
+                    app:layout_constraintTop_toBottomOf="@id/divider2"
+                    app:lineHeight="@dimen/text_xhuge"
+                    tools:text="@tools:sample/us_phones" />
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/color_divider"
+                    app:layout_constraintTop_toBottomOf="@id/tvMobile" />
+
+                <TextView
+                    android:id="@+id/tvAgeLabel"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/age"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider3" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvAge"
+                    style="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{user.component7().component2().toString()}"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/barrier"
+                    app:layout_constraintTop_toBottomOf="@id/divider3"
+                    app:lineHeight="@dimen/text_xhuge"
+                    tools:text="@tools:sample/us_phones" />
+
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/color_divider"
+                    app:layout_constraintTop_toBottomOf="@id/tvAge" />
+
+                <TextView
+                    android:id="@+id/tvNationalityLabel"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nationality"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider4" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvNationality"
+                    style="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{user.component4()}"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/barrier"
+                    app:layout_constraintTop_toBottomOf="@id/divider4"
+                    app:lineHeight="@dimen/text_xhuge"
+                    tools:text="@tools:sample/us_phones" />
+
+                <View
+                    android:id="@+id/divider5"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/color_divider"
+                    app:layout_constraintTop_toBottomOf="@id/tvNationality" />
+
+                <TextView
+                    android:id="@+id/tvLocationLabel"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/location"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider5" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvLocation"
+                    style="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{user.component8().component3()}"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/barrier"
+                    app:layout_constraintTop_toBottomOf="@id/divider5"
+                    app:lineHeight="@dimen/text_xhuge"
+                    tools:text="@tools:sample/us_phones" />
+
+                <View
+                    android:id="@+id/divider6"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/color_divider"
+                    app:layout_constraintTop_toBottomOf="@id/tvLocation" />
+
+                <TextView
+                    android:id="@+id/tvGenderLabel"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gender"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider6" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvGender"
+                    style="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{user.component1()}"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/barrier"
+                    app:layout_constraintTop_toBottomOf="@id/divider6"
+                    app:lineHeight="@dimen/text_xhuge"
+                    tools:text="@tools:sample/us_phones" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+</layout>

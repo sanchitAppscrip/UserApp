@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">UserApp</string>
+    <string name="user_details">UserDetails</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="mobile">Mobile</string>
+    <string name="age">Age</string>
+    <string name="nationality">Nationality</string>
+    <string name="location">Location</string>
+    <string name="gender">Gender</string>
+</resources>
