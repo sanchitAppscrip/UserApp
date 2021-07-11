@@ -16,6 +16,7 @@
         android:layout_marginStart="@dimen/app_margin"
         android:layout_marginEnd="@dimen/app_margin"
         android:layout_marginBottom="@dimen/app_margin"
+        android:clickable="true"
         app:cardBackgroundColor="@color/color_divider">
 
         <RelativeLayout
@@ -25,14 +26,26 @@
             android:clickable="true"
             android:focusable="true">
 
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="@dimen/app_margin"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                tools:src="@tools:sample/avatars" />
+
             <TextView
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@id/tvMobile"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
+                android:layout_toEndOf="@id/ivProfile"
                 android:text="@{user.component5().component1()+ user.component5().component2()}"
                 android:textColor="@color/design_default_color_primary_dark"
                 android:textSize="20sp"
@@ -44,11 +57,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvName"
-                android:layout_alignParentStart="true"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="12dp"
-                android:layout_toStartOf="@id/tvLocation"
+                android:layout_toEndOf="@id/ivProfile"
                 android:text="@{user.component8().component3()}"
                 android:textColor="@color/black"
                 android:textSize="16sp"

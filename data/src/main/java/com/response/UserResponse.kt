@@ -10,6 +10,6 @@ data class UserResponse(
     val results: List<UserDto>? = null,
 
     @field:SerializedName("info")
-    val info: String? = null
+    val info: InfoDto? = null
 
 ) : Parcelable

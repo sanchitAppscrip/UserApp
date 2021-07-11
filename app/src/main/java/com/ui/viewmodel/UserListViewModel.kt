@@ -24,60 +24,28 @@ class UserListViewModel @Inject constructor(
 ) : ViewModel() {
     private val disposables = CompositeDisposable()
 
+    private var page = 0
+
     val userObserver: MutableLiveData<Resource<UserResponse>> =
         MutableLiveData<Resource<UserResponse>>()
 
     fun getUsersObserver(): LiveData<Resource<UserResponse>> = userObserver
 
-
-//    fun init() {
-//        cells = ObservableArrayMap()
-//        currentPlayer = player1
-//        response.value = Response.success("Player1 turn")
-//    }
-
-    fun getUsers() {
-        disposables.add(userApi.getUser()
+    fun getUsers(page: Int? = null, results: Int? = null, seed: String? = null) {
+        disposables.add(userRepo.getUser(page, results, seed)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { }
             .subscribe({ gameStatus ->
                 Log.d("Viewmodel", "Response Success")
-                Log.d("Viewmodel", " value ${gameStatus.json}")
-                Log.d("Viewmodel", " value ${gameStatus?.json?.results?.size}")
-                userObserver.value = Resource.success(gameStatus.json)
+                Log.d("Viewmodel", " value ${gameStatus.info}")
+                Log.d("Viewmodel", " value ${gameStatus?.results?.size}")
+                userObserver.value = Resource.success(gameStatus)
             }) { throwable ->
 
                 Log.d("Viewmodel", "Response Error")
             })
     }
-
-//    fun onClickedCellAt(row: Int, column: Int, cellNo: Int) {
-//
-//            disposables.add(gameRepo.changeGameState(cellNo, currentPlayer)
-//                .subscribeOn(Schedulers.computation())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .doOnSubscribe { response.setValue(Response.loading()) }
-//                .subscribe(
-//                    { gameStatus ->
-//                        response.value = Response.success(gameStatus)
-//                        if (!gameStatus.equals("GameOver"))
-//                            cells?.put(stringFromNumbers(row, column), currentPlayer.value)
-//                    }
-//                ) { throwable -> response.setValue(Response.error(throwable)) }
-//            )
-//        }
-//    }
-
-//    fun reset() {
-//        cells?.forEach { (key, _) ->
-//            cells?.put(key, "")
-//        }
-//        init()
-//        gameReset = true
-//        disposables.clear()
-//        gameRepo.resetGame()
-//    }
 
     override fun onCleared() {
         super.onCleared()

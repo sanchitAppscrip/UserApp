@@ -11,28 +11,13 @@ import javax.inject.Inject
 class UserRepoImpl @Inject constructor(
     val userApi: UserApi
 ) : UserRepo {
-//    override fun changeGameState(position: Int, player: Player): Single<String> {
-//        var msg =
-//            if (gameHandler.game.hasGameEnded()) {
-//                "GameOver"
-//            } else {
-//                gameHandler.game.changeGameState(position, player)
-//            }
-//
-//        return Single.just(msg)
-//    }
-//
-//    override fun resetGame() {
-//        gameHandler.game.reset()
-//    }
-
-    override fun getUser(): Single<ApiResponse> {
+    override fun getUser(page: Int?, results: Int?, seed: String?): Single<UserResponse> {
         Log.d("Repo", " Call initiate")
 //            val response =  userApi.getUser()
 
 //        Log.d("Repo"," Call completed")
 
-        return userApi.getUser()
+        return userApi.getUser(page, results, seed)
 
 //        return Single.create<UserResponse>{
 //            userApi.getUser()

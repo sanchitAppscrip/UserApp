@@ -23,10 +23,11 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         viewModel = ViewModelProvider(this).get(UserListViewModel::class.java)
-
-        Handler().postDelayed({
-            viewModel.getUsers()
-        }, SPLASH_DISPLAY_LENGTH)
+//
+//        Handler().postDelayed({
+//            viewModel.getUsers()
+//        }, SPLASH_DISPLAY_LENGTH)
+        viewModel.getUsers()
 
         setObserver()
     }
@@ -38,6 +39,7 @@ class SplashActivity : AppCompatActivity() {
                 }
 
                 Status.SUCCESS -> {
+                    UserSeed.seed = resource.data?.info?.seed.toString()
                     startActivity(Intent(this, UserListActivity::class.java))
                     finish()
                 }

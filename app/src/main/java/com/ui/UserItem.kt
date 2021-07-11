@@ -1,5 +1,6 @@
 package com.ui
 
+import com.bumptech.glide.Glide
 import com.response.UserDto
 import com.test.userapp.R
 import com.test.userapp.databinding.ItemUserBinding
@@ -15,22 +16,12 @@ class UserItem() : BindableItem<ItemUserBinding>() {
 
     override fun bind(viewBinding: ItemUserBinding, position: Int) {
         viewBinding.user = userDto
-
+        Glide.with(viewBinding.ivProfile)
+            .load(userDto?.image?.large)
+            .placeholder(R.color.color_divider)
+            .into(viewBinding.ivProfile)
     }
 
     override fun getLayout(): Int = R.layout.item_user
 
-    fun getUserDetail(): UserDto? = userDto
 }
-
-//class SongItem : BindableItem<SongBinding> {
-//    constructor(song: Song?) : this(song) {}
-//
-//    override fun bind(binding: SongBinding, position: Int) {
-//        binding.setSong(song)
-//    }
-//
-//    override fun getLayout(): Int {
-//        return R.layout.song
-//    }
-//}

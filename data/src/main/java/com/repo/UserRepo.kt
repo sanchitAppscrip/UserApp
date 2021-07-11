@@ -5,9 +5,6 @@ import com.response.UserResponse
 import io.reactivex.rxjava3.core.Single
 
 interface UserRepo {
-
-    //    fun changeGameState(position: Int, player: Player): Single<String>
-//    fun resetGame()
-    fun getUser(): Single<ApiResponse>
+    fun getUser(page: Int? = null, results: Int? = null, seed: String? = null): Single<UserResponse>
 
 }
