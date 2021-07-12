@@ -1,6 +1,5 @@
 package com.ui
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -10,15 +9,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.extensions.cannotScrollBottom
 import com.model.Status
 import com.response.UserDto
-import com.ui.viewmodel.UserListViewModel
 import com.test.userapp.R
 import com.test.userapp.databinding.ActivityUserListBinding
+import com.ui.items.LoadingItem
+import com.ui.items.UserItem
+import com.ui.viewmodel.UserListViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.databinding.GroupieViewHolder
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class UserListActivity : AppCompatActivity() {
+class UserListActivity : AppCompatActivity(), UserItem.Callback {
+    companion object {
+        private const val FLIPPER_CHILD_LIST = 0
+        private const val FLIPPER_CHILD_LOADING = 1
+    }
+
     private lateinit var viewModel: UserListViewModel
     private lateinit var activityUserListBinding: ActivityUserListBinding
     private lateinit var adapter: GroupAdapter<GroupieViewHolder<ActivityUserListBinding>>
@@ -31,19 +37,14 @@ class UserListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initDataBinding()
+        initialise()
         setListeners()
-        seed = UserSeed.seed
-        viewModel.getUsers(page = pageNo, results = pageResults, seed = seed)
-
         setObserver()
+    }
 
-        adapter.setOnItemClickListener { item, view ->
-            if (item is UserItem) {
-                val intent = item.userDto?.let { UserDetailActivity.getStartIntent(it, this) }
-                startActivity(intent)
-            }
-
-        }
+    private fun initialise() {
+        seed = UserToken.seed
+        viewModel.getUsers(page = pageNo, results = pageResults, seed = seed)
     }
 
     private fun setListeners() {
@@ -51,28 +52,34 @@ class UserListActivity : AppCompatActivity() {
             RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                if (recyclerView.cannotScrollBottom()) {
-                    adapter.add(loadingItem)
+                if (recyclerView.cannotScrollBottom() && viewModel.isValidForPaging()) {
                     viewModel.getUsers(pageNo, pageResults, seed)
 
                 }
             }
         })
+
     }
 
     private fun setObserver() {
         viewModel.getUsersObserver().observe(this, Observer { resource ->
             when (resource.status) {
                 Status.LOADING -> {
+                    if (isFirstpage)
+                        activityUserListBinding.viewFlipper.displayedChild = FLIPPER_CHILD_LOADING
+                    else
+                        adapter.add(loadingItem)
                 }
 
                 Status.SUCCESS -> {
+                    activityUserListBinding.viewFlipper.displayedChild = FLIPPER_CHILD_LIST
                     resource.data?.results?.let {
                         addUsersToAdapter(it)
                     }
                 }
 
                 Status.ERROR -> {
+                    activityUserListBinding.viewFlipper.displayedChild = FLIPPER_CHILD_LIST
                 }
             }
         })
@@ -82,16 +89,13 @@ class UserListActivity : AppCompatActivity() {
         activityUserListBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_list)
 
         viewModel = ViewModelProvider(this).get(UserListViewModel::class.java)
-
-        activityUserListBinding.gameViewModel = viewModel
         activityUserListBinding.lifecycleOwner = this
 
         adapter = GroupAdapter()
         activityUserListBinding.rvUser.adapter = adapter
-
     }
 
-    fun addUsersToAdapter(list: List<UserDto>) {
+    private fun addUsersToAdapter(list: List<UserDto>) {
         if (isFirstpage) {
             adapter.clear()
         } else {
@@ -99,9 +103,15 @@ class UserListActivity : AppCompatActivity() {
             adapter.remove(loadingItem)
         }
         list.forEach { user ->
-            val item = UserItem(user)
+            val item = UserItem(user, this)
             adapter.add(item)
         }
         isFirstpage = false
     }
+
+    override fun onUserItemClickListener(userDto: UserDto) {
+        val intent = UserDetailActivity.getStartIntent(userDto, this)
+        startActivity(intent)
+    }
+
 }

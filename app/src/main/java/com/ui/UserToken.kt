@@ -1,5 +1,5 @@
 package com.ui
 
-object UserSeed {
+object UserToken {
     lateinit var seed: String
 }

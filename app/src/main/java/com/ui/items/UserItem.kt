@@ -1,4 +1,4 @@
-package com.ui
+package com.ui.items
 
 import com.bumptech.glide.Glide
 import com.response.UserDto
@@ -9,9 +9,11 @@ import com.xwray.groupie.databinding.BindableItem
 
 class UserItem() : BindableItem<ItemUserBinding>() {
     var userDto: UserDto? = null
+    lateinit var callback: Callback
 
-    constructor(userDto: UserDto? = null) : this() {
+    constructor(userDto: UserDto? = null, callback: Callback) : this() {
         this.userDto = userDto
+        this.callback = callback
     }
 
     override fun bind(viewBinding: ItemUserBinding, position: Int) {
@@ -20,8 +22,17 @@ class UserItem() : BindableItem<ItemUserBinding>() {
             .load(userDto?.image?.large)
             .placeholder(R.color.color_divider)
             .into(viewBinding.ivProfile)
+
+        viewBinding.rlUser.setOnClickListener {
+            userDto?.let { it1 -> callback.onUserItemClickListener(it1) }
+        }
+
     }
 
     override fun getLayout(): Int = R.layout.item_user
+
+    interface Callback {
+        fun onUserItemClickListener(userDto: UserDto)
+    }
 
 }

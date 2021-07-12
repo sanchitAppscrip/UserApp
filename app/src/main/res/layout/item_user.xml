@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="user"
             type="com.response.UserDto" />
@@ -16,11 +15,11 @@
         android:layout_marginStart="@dimen/app_margin"
         android:layout_marginEnd="@dimen/app_margin"
         android:layout_marginBottom="@dimen/app_margin"
-        android:clickable="true"
         app:cardBackgroundColor="@color/color_divider">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rlUser"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?selectableItemBackground"
             android:clickable="true"
@@ -30,10 +29,13 @@
                 android:id="@+id/ivProfile"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_centerVertical="true"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="@dimen/app_margin"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:riv_oval="true"
                 tools:src="@tools:sample/avatars" />
 
@@ -41,45 +43,48 @@
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@id/tvMobile"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
-                android:layout_toEndOf="@id/ivProfile"
                 android:text="@{user.component5().component1()+ user.component5().component2()}"
                 android:textColor="@color/design_default_color_primary_dark"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                android:layout_marginEnd="10dp"
+                android:maxLines="2"
+                app:layout_constraintEnd_toStartOf="@id/tvName"
+                app:layout_constraintStart_toEndOf="@id/ivProfile"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="Sanchit" />
 
             <TextView
                 android:id="@+id/tvLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvName"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="12dp"
-                android:layout_toEndOf="@id/ivProfile"
                 android:text="@{user.component8().component3()}"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/ivProfile"
+                app:layout_constraintTop_toBottomOf="@id/tvName"
                 tools:text="India" />
 
             <TextView
                 android:id="@+id/tvMobile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:maxLength="10"
                 android:text="@{user.component3()}"
                 android:textColor="@color/black"
                 android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="123456789" />
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
 </layout>

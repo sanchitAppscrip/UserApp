@@ -13,17 +13,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:orientation="vertical">
 
-        <!--        <com.google.android.material.appbar.MaterialToolbar-->
-        <!--            android:id="@+id/toolbar"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:background="@color/design_default_color_primary_dark"-->
-        <!--            app:navigationIcon="@drawable/ic_back"-->
-        <!--            app:navigationIconTint="@color/white"-->
-        <!--            app:title="@string/user_details"-->
-        <!--            app:titleTextColor="@color/white" />-->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/design_default_color_primary_dark"
+            app:navigationIcon="@drawable/ic_back"
+            app:navigationIconTint="@color/white"
+            app:title="@string/user_details"
+            app:titleTextColor="@color/white" />
 
 
         <androidx.core.widget.NestedScrollView
@@ -52,19 +53,22 @@
 
                 <TextView
                     android:id="@+id/tvNameLabel"
-                    style="@style/TextAppearance.AppCompat.Body1"
+                    style="@style/TextStyle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:text="@string/name"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/ivProfile" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvName"
-                    style="@style/TextAppearance.AppCompat.Body2"
+                    style="@style/TextStyle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{user.component5().component1()}"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@{user.component5().component1()+ user.component5().component2()}"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
@@ -78,12 +82,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@color/color_divider"
                     app:layout_constraintTop_toBottomOf="@id/tvName" />
 
                 <TextView
                     android:id="@+id/tvEmailLabel"
-                    style="@style/TextAppearance.AppCompat.Body1"
+                    style="@style/TextStyle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/email"
@@ -92,9 +97,10 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvEmail"
-                    style="@style/TextAppearance.AppCompat.Body2"
+                    style="@style/TextStyle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:text="@{user.component2()}"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -109,6 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@color/color_divider"
                     app:layout_constraintTop_toBottomOf="@id/tvEmail" />
 
@@ -116,12 +123,13 @@
                     android:id="@+id/barrier"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     app:barrierDirection="end"
                     app:constraint_referenced_ids="tvNameLabel,tvEmailLabel,tvMobileLabel,tvAgeLabel,tvNationalityLabel,tvLocationLabel,tvGenderLabel" />
 
                 <TextView
                     android:id="@+id/tvMobileLabel"
-                    style="@style/TextAppearance.AppCompat.Body1"
+                    style="@style/TextStyle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/mobile"
@@ -130,9 +138,10 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvMobile"
-                    style="@style/TextAppearance.AppCompat.Body2"
+                    style="@style/TextStyle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:text="@{user.component3()}"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -147,12 +156,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@color/color_divider"
                     app:layout_constraintTop_toBottomOf="@id/tvMobile" />
 
                 <TextView
                     android:id="@+id/tvAgeLabel"
-                    style="@style/TextAppearance.AppCompat.Body1"
+                    style="@style/TextStyle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/age"
@@ -161,9 +171,10 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvAge"
-                    style="@style/TextAppearance.AppCompat.Body2"
+                    style="@style/TextStyle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:text="@{user.component7().component2().toString()}"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -178,12 +189,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@color/color_divider"
                     app:layout_constraintTop_toBottomOf="@id/tvAge" />
 
                 <TextView
                     android:id="@+id/tvNationalityLabel"
-                    style="@style/TextAppearance.AppCompat.Body1"
+                    style="@style/TextStyle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/nationality"
@@ -192,9 +204,10 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvNationality"
-                    style="@style/TextAppearance.AppCompat.Body2"
+                    style="@style/TextStyle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:text="@{user.component4()}"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -209,12 +222,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@color/color_divider"
                     app:layout_constraintTop_toBottomOf="@id/tvNationality" />
 
                 <TextView
                     android:id="@+id/tvLocationLabel"
-                    style="@style/TextAppearance.AppCompat.Body1"
+                    style="@style/TextStyle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/location"
@@ -223,9 +237,10 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvLocation"
-                    style="@style/TextAppearance.AppCompat.Body2"
+                    style="@style/TextStyle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:text="@{user.component8().component3()}"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -240,12 +255,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@color/color_divider"
                     app:layout_constraintTop_toBottomOf="@id/tvLocation" />
 
                 <TextView
                     android:id="@+id/tvGenderLabel"
-                    style="@style/TextAppearance.AppCompat.Body1"
+                    style="@style/TextStyle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/gender"
@@ -254,9 +270,10 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvGender"
-                    style="@style/TextAppearance.AppCompat.Body2"
+                    style="@style/TextStyle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:text="@{user.component1()}"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
