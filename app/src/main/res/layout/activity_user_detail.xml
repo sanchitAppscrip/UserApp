@@ -66,15 +66,13 @@
                     style="@style/TextStyle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:layout_marginTop="20dp"
-                    android:text="@{user.component5().component1()+ user.component5().component2()}"
+                    android:text="@{user.component5().component1() + user.component5().component2()}"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toEndOf="@id/barrier"
                     app:layout_constraintTop_toBottomOf="@id/ivProfile"
-                    app:lineHeight="@dimen/text_xhuge"
                     tools:text="@tools:sample/full_names" />
 
                 <View
@@ -100,14 +98,12 @@
                     style="@style/TextStyle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:text="@{user.component2()}"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toEndOf="@id/barrier"
                     app:layout_constraintTop_toBottomOf="@id/divider1"
-                    app:lineHeight="@dimen/text_xhuge"
                     tools:text="test@gmail.com" />
 
                 <View
@@ -115,7 +111,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:background="@color/color_divider"
                     app:layout_constraintTop_toBottomOf="@id/tvEmail" />
 
@@ -141,14 +136,12 @@
                     style="@style/TextStyle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:text="@{user.component3()}"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toEndOf="@id/barrier"
                     app:layout_constraintTop_toBottomOf="@id/divider2"
-                    app:lineHeight="@dimen/text_xhuge"
                     tools:text="@tools:sample/us_phones" />
 
                 <View
@@ -174,14 +167,12 @@
                     style="@style/TextStyle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:text="@{user.component7().component2().toString()}"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toEndOf="@id/barrier"
                     app:layout_constraintTop_toBottomOf="@id/divider3"
-                    app:lineHeight="@dimen/text_xhuge"
                     tools:text="@tools:sample/us_phones" />
 
                 <View
@@ -207,14 +198,12 @@
                     style="@style/TextStyle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:text="@{user.component4()}"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toEndOf="@id/barrier"
                     app:layout_constraintTop_toBottomOf="@id/divider4"
-                    app:lineHeight="@dimen/text_xhuge"
                     tools:text="@tools:sample/us_phones" />
 
                 <View
@@ -222,7 +211,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:background="@color/color_divider"
                     app:layout_constraintTop_toBottomOf="@id/tvNationality" />
 
@@ -240,14 +228,12 @@
                     style="@style/TextStyle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:text="@{user.component8().component3()}"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toEndOf="@id/barrier"
                     app:layout_constraintTop_toBottomOf="@id/divider5"
-                    app:lineHeight="@dimen/text_xhuge"
                     tools:text="@tools:sample/us_phones" />
 
                 <View
@@ -273,14 +259,12 @@
                     style="@style/TextStyle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:text="@{user.component1()}"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toEndOf="@id/barrier"
                     app:layout_constraintTop_toBottomOf="@id/divider6"
-                    app:lineHeight="@dimen/text_xhuge"
                     tools:text="@tools:sample/us_phones" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
