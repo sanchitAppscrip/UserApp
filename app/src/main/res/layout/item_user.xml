@@ -23,7 +23,8 @@
             android:layout_height="wrap_content"
             android:background="?selectableItemBackground"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:paddingBottom="10dp">
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/ivProfile"
@@ -31,10 +32,11 @@
                 android:layout_height="60dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintTop_toTopOf="parent"
                 app:riv_oval="true"
                 tools:src="@tools:sample/avatars" />
@@ -51,10 +53,11 @@
                 android:textStyle="bold"
                 android:layout_marginEnd="10dp"
                 android:maxLines="2"
-                app:layout_constraintEnd_toStartOf="@id/tvName"
                 app:layout_constraintStart_toEndOf="@id/ivProfile"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Sanchit" />
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toStartOf="@id/tvMobile"
+                tools:text="SanchitSanchitSanchitSanchitSanchitSanchitSanchit" />
 
             <TextView
                 android:id="@+id/tvLocation"
@@ -81,9 +84,9 @@
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="123456789" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
